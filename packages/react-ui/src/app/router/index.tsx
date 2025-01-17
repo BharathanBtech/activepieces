@@ -46,6 +46,7 @@ import { ResetPasswordPage } from '../routes/forget-password';
 import { FormPage } from '../routes/forms';
 import IssuesPage from '../routes/issues';
 import PlansPage from '../routes/plans';
+import SettingsBilling from '../routes/platform/billing';
 import SettingsHealthPage from '../routes/platform/infra/health';
 import SettingsWorkersPage from '../routes/platform/infra/workers';
 import { PlatformMessages } from '../routes/platform/notifications/platform-messages';
@@ -355,7 +356,7 @@ const routes = [
     path: '/settings/environments',
     element: (
       <DashboardContainer>
-        <RoutePermissionGuard permission={Permission.READ_GIT_REPO}>
+        <RoutePermissionGuard permission={Permission.READ_PROJECT_RELEASE}>
           <ProjectSettingsLayout>
             <PageTitle title="Environments">
               <EnvironmentPage />
@@ -531,6 +532,18 @@ const routes = [
             <SettingsHealthPage />
           </PageTitle>
         </PlatformSecondSidebarLayout>
+      </PlatformAdminContainer>
+    ),
+  },
+  {
+    path: '/platform/setup/billing',
+    element: (
+      <PlatformAdminContainer>
+        <PageTitle title="Billing">
+          <PlatformSecondSidebarLayout type="setup">
+            <SettingsBilling />
+          </PlatformSecondSidebarLayout>
+        </PageTitle>
       </PlatformAdminContainer>
     ),
   },
